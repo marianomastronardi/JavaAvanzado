@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Clase02</title>
+    <meta charset=!utf-8>
+</head>
+
+<body>
+    <h1 id="titulo">Titulo</h1>
+    <h2>Subtitulo</h2>
+    <ul>
+        <li class="item">Item 01</li>
+        <li class="item">Item 02</li>
+        <li class="item">Item 03</li>
+    </ul>
+    <p>Parrafo</p>
+    <span id="texto">
+        Texto
+        <span style="display:none;">texto oculto</span>
+        Mas texto
+    </span>
+    <p id="parrafo"></p>
+
+    <script>
+        const h1 = document.getElementById('titulo');
+        //alert(h1);
+        //console.log(h1);
+        //console.dir(h1);
+        if (h1) { //null = false
+            console.log(h1.textContent);//getter
+            h1.textContent = 'Nuevo Texto';//setter
+
+            h1.innerHTML = '<em>Nuevo Texto</em>';//setter
+            const nombre = 'Mariano';
+            alert(`Mi nombre es ${nombre}`);//Alt+96 //Template String
+        }
+
+        const texto = document.getElementById('texto');
+        console.log(texto.innerText);
+        console.log(texto.textContent);
+
+        const p = document.getElementById('parrafo');
+        p.innerHTML = `
+            <b>Esto esta en negrita</b>
+            <em>Esto esta en italica</em>
+            <u>Esto esta subrayado</u>
+        `;
+
+        const items = document.getElementsByClassName('item');
+        console.log(items);
+
+        const colores = ['red','blue','green'];  
+        for (let i = 0; i < items.length; i++) {
+            console.log(items[i].textContent);
+            items[i].style.color = colores[i];  
+            //items[i].style.backgroundColor = colores[i];                
+        }
+
+        const h2s = document.getElementsByTagName('h2');
+        if (h2s.length) {
+            console.log(h2s);
+        }
+
+        //querySelector and querySelectorAll
+        //reemplazan a los getElement
+        //*************css**************
+        //#titulo es la forma de buscar por ID
+        //.item es la forma de buscar por Class
+        //h2 es la forma de buscar por Tag
+
+        //const itemqueryselector = document.querySelector('#titulo');
+        const itemqueryselector = document.querySelector('.item');
+        console.log(itemqueryselector);
+
+        //const itemqueryselectorall = document.querySelectorAll('#titulo');
+        const itemqueryselectorall = document.querySelectorAll('.item');
+        console.log(itemqueryselectorall);
+
+    </script>
+</body>
+
+</html>

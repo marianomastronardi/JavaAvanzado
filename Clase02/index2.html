@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Clase02 - Eventos</title>
+    <meta charset=!utf-8>
+</head>
+
+<body>
+    <!--<button onclick="alert('Hola');">Click</button>-->
+    <div>
+    <button id="rojo">Rojo</button>
+    <button id="azul">Azul</button>
+    <button id="verde">Verde</button>
+    </div>
+
+    <h1>H1
+        <h2>H2
+            <ul>miLista
+                <li>item1</li>
+                <li>item2</li>
+                <li>item3</li>
+            </ul>
+        </h2>
+    </h1>
+
+    <script>
+        const div = document.querySelector('div');
+
+        div.addEventListener('click', e => {
+            //console.log(e.target.id);
+            if(e.target.tagName.toLowerCase() === 'button'){
+                alert(e.target.id);
+            }
+        })
+
+        //desaparecer nodos dentro del body
+        document.body.addEventListener('click', e =>{
+            e.target.style.display = 'none';
+        })
+        
+        /*
+        const botonrojo = document.getElementById('btnRed');
+        const botonazul = document.getElementById('btnBlue');
+        const botonverde = document.getElementById('btnGreen');
+        */
+        /*
+        function decirClick(){
+            alert('Click');
+        }
+        boton.onclick = decirClick;
+        */
+
+        /*
+        --solo asigna la ultima funcion     
+        boton.onclick = function(){
+            alert('Click');
+        }
+
+        boton.onclick = ()=>{
+            alert('Click');
+        }
+        */
+/*
+        botonrojo.addEventListener('click', () => {
+            alert('Red');
+        });
+
+        botonazul.addEventListener('click', () => {
+            alert('Blue');
+        });
+
+        botonverde.addEventListener('click', () => {
+            alert('Green');
+        });
+  */
+    </script>
+</body>
+
+</html>
