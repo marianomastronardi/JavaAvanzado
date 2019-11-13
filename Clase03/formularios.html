@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 03</title>
+		<meta charset="utf-8">
+		<style>
+			input:valid {
+				border: 1px solid green;
+			}
+			
+			input:invalid {
+				border: 1px solid red;
+			}
+			
+			input:invalid + .error {
+				display: inline-block;
+			}
+			
+			.error { color: red; font-weight: bold; display: none; }
+		</style>
+	</head>
+	<body>
+		<!-- <a href="http://www.google.com" target="_blank">Ir a google</a> -->
+		
+		<form action="enviar.php" method="post" novalidate>
+			<div>
+				<label for="nombre">Nombre: </label>
+				<input type="text" name="nombre" id="nombre" required>
+				<span class="error">Este campo es obligatorio</span>
+			</div>
+			<div>
+				<label for="edad">Edad: </label>
+				<input type="number" name="edad" id="edad">
+				<span class="error">Ingrese un numero</span>
+			</div>
+			<div>
+				<label for="email">Email: </label>
+				<input type="email" name="email" id="email">
+				<span class="error">Formato de email invalido</span>
+			</div>
+			<input type="submit" value="Enviar">
+		</form>
+		
+		
+		
+		<script>
+			const form = document.querySelector('form');
+			const nombre = document.getElementById('nombre');
+			const edad = document.getElementById('edad');
+			const email = document.getElementById('email');
+			
+			function esEmailValido(email) {
+				const arroba = email.split('@');
+				
+				if (arroba.length === 2 && arroba[0].length > 0) {
+					const punto = arroba[1].split('.');
+					if (punto.length === 2 || punto.length === 3) {
+						const elem = punto.find(elem => elem.length === 0);
+						if (elem !== '') {
+							return true;
+						}
+					}
+				}
+				
+				return false;
+			}
+			
+			form.addEventListener('submit', e => {
+				const edadUsuario = parseInt(edad.value);
+				
+				let error = nombre.value === '' || isNaN(edadUsuario) || edadUsuario < 1 || edadUsuario > 100 || !esEmailValido(email.value);
+
+				if (error) {
+					e.preventDefault();
+				}
+			});
+		
+		
+			/*const a = document.querySelector('a');
+			
+			a.onclick = () => {
+				alert('Chau');
+				
+				return false;
+			}
+			
+
+			a.addEventListener('click', e => {
+				e.preventDefault();
+				alert('Chau');
+			});	
+			*/
+			
+		</script>
+	</body>
+</html>

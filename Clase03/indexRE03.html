@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Clase03</title>
+    <meta charset="utf-8">
+    <style>
+        input:valid{
+            border:1px solid green;
+        }
+
+        input:invalid {
+            border:1px solid red;
+        }
+
+        input:invalid + .error{
+            display: inline-block;            
+        }
+
+
+        .error{color:red;font-weight: bold; display:none}
+    </style>
+</head>
+
+<body>
+    <!--<a href="http:www.google.com" target="_blank">Ir a Google</a>-->
+
+    <form action="enviar.php" method="post" novalidate>
+        <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" required> 
+                <span class="error">Campo Obligatorio</span>
+        </div>
+        <div>
+                <label for="edad">Edad:</label>
+                <input type="number" name="edad" id="edad" min="1" max="100"> 
+                <span class="error">Ingrese un numero</span>
+        </div>
+        <div>
+                <label for="email">Mail:</label>
+                <input type="email" name="email" id="email">
+                <span class="error">Formato de Email invalido</span> 
+        </div>
+        <input type="submit" value="Enviar">
+    </form>
+    <script>
+        const form = document.querySelector('form');
+        /* form.addEventListener('submit', e => {
+            e.preventDefault();
+        })  */
+        const nombre = document.getElementById('nombre');
+        const edad = document.getElementById('edad');
+        const email = document.getElementById('email');
+
+
+        form.addEventListener('submit', e => {
+            let edadUsuaurio = parseInt(edad.value);
+            
+            let error = nombre.value === '' || isNaN(edadUsuaurio) || edadUsuaurio < 1 || edadUsuaurio > 100 || email.value.includes('@');
+
+           if(error){
+               e.preventDefault();
+           }
+        }) 
+
+        //const a = document.querySelector('a');
+        /*a.onclick = () => {
+            alert('Chau');
+            return false; //cancela el evento por defecto
+            //para los eventos on..... atributo HTML
+        }*/
+
+       /* a.addEventListener('click', e => {
+            e.preventDefault();
+            alert('Chau');
+            //return false;
+        });*/
+    </script>
+
+</body>
+
+</html>

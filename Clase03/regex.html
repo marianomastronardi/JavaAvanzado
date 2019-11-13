@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 03</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<input type="email" name="email" id="email">
+		<button>Enviar</button>
+
+		<script>
+			/*
+			let regex = /\d/; // Contiene caracteres numericos
+			console.log(regex.test('asdad')); // false
+			console.log(regex.test('asdas1d')); // true
+
+			regex = /\w/;
+			console.log(regex.test('asdad')); // true
+			console.log(regex.test('asdas1d')); // true
+			console.log(regex.test(' ')); // false
+
+			regex = /@/;
+			console.log(regex.test('asdsd@asdasd.com')); // true
+			console.log(regex.test('asdsasdasd.com')); // false
+
+			regex = /car+e/; // como minimo una r
+			console.log(regex.test('carrera')); // true
+			console.log(regex.test('caera')); // false
+
+			regex = /car*e/; // la r es opcional
+			console.log(regex.test('carrera')); // true
+			console.log(regex.test('caera')); // true
+			*/
+
+			// https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions
+			// https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/RegExp
+			// https://regex101.com/
+			const boton = document.querySelector('button');
+			const email = document.querySelector('#email');
+			const regexEmail =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+			boton.addEventListener('click', e => {
+				if (regexEmail.test(email.value)) {
+					alert('Email valido');
+				} else {
+					alert('Email invalido');
+				}
+			});
+
+			
+		</script>
+	</body>
+</html>
