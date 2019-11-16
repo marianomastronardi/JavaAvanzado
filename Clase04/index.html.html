@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 04</title>
+		<meta charset="utf-8">
+		<style>
+			#reloj {
+				background-color: black;
+				color: orange;
+				border: 2px solid red;
+				padding: 10px;
+				font-weight: bold;
+				text-align: center;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="reloj">10:00:00</div>
+		
+		<script>
+			const reloj = document.getElementById('reloj');
+			
+			const ponerCero = numero => numero < 10 ? `0${numero}` : numero;
+			
+			/*
+			function ponerCero (numero) {
+				if (numero < 10) {
+					numero = `0${numero}`;
+				}
+				
+				return numero;
+			}
+			*/
+			
+			function mostrarFecha() {
+				const fecha = new Date();
+				const hora = ponerCero(fecha.getHours());
+				const min = ponerCero(fecha.getMinutes());
+				const sec = ponerCero(fecha.getSeconds());
+				
+				return `${hora}:${min}:${sec}`;
+			}
+			
+			
+			const idInterval = setInterval(function () {
+				reloj.textContent = mostrarFecha();
+			}, 1000);
+			
+			
+			// clearInterval(idInterval);
+			
+			/*
+			console.log('INIT');
+			
+			setTimeout(function () {
+				console.log('MEDIO');
+			}, 0);
+			
+			console.log('FINAL');
+			*/
+			
+
+		</script>
+	</body>
+</html>

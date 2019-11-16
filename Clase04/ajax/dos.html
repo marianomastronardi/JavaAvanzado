@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 04</title>
+		
+	</head>
+	<body>
+		<header>Encabezado</header>
+		<main>
+			<h1>Productos</h1>
+			<section id="productos">
+			
+			</section>
+		</main>
+		<footer>Pie</footer>
+		<script>
+			// https://www.youtube.com/watch?v=8aGhZQkoFbQ
+			
+			// https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest
+			
+			console.log('INIT');
+			
+			const xhr = new XMLHttpRequest();
+			
+			xhr.addEventListener('load', e => {
+				console.log(xhr);
+				console.log(xhr.response);
+				
+				if (xhr.status >= 200 && xhr.status < 300) {
+					const productos = document.getElementById('productos');
+					productos.innerHTML = xhr.response;
+				} else {
+					document.body.innerHTML = xhr.response;
+				}
+			});
+			
+			// xhr.open('get', 'info.txt');
+			xhr.open('get', 'producto.html');
+			
+			xhr.send();
+			
+			console.log('FINAL');
+		</script>
+	</body>
+</html>

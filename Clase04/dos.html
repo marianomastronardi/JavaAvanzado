@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 04</title>
+		
+	</head>
+	<body>
+		<script>
+			// https://www.youtube.com/watch?v=8aGhZQkoFbQ
+			
+			// https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest
+			const xhr = new XMLHttpRequest();
+			
+			xhr.addEventListener('load', e => {
+				console.log(xhr);
+				console.log(xhr.response);
+			});
+			
+			xhr.open('get', 'info.txt');
+			
+			xhr.send();
+		</script>
+	</body>
+</html>
