@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<header>
+    <title>Clase05</title>
+    <meta charset="utf-8">
+
+</header>
+
+<body>
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', e => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                const obj = JSON.parse(xhr.response);
+
+                let contenido = '<ul>';
+                obj.forEach(element => {
+                    contenido += `<li><input type="checkbox" id="${element.id}" ${element.completed ? 'checked' : ''}>${element.title}`;
+                        contenido += '</li>';
+                });
+                contenido += '</ul>';
+
+                document.body.innerHTML = contenido;
+                const ul = document.querySelector('ul');
+
+                ul.addEventListener('click', e =>{
+                    console.log(e.target);
+                    console.log(e.type == 'checkbox');
+                })
+            }
+        })
+
+        xhr.open('get', 'https://jsonplaceholder.typicode.com/todos');
+
+        xhr.send();
+    </script>
+</body>
+
+</html>

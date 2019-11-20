@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<header>
+    <title>Clase05</title>
+    <meta charset="utf-8">
+
+</header>
+
+<body>
+    <script>
+
+        //Metodo 1
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', e => {
+            const o = JSON.parse(xhr.response); //convierte un string a obj
+            //const o = JSON.stringify(xhr.response); //convierte un obj a string
+            console.log(o[0].body); 
+        })
+
+        //Metodo 2 (recomendada)
+        /* const xhr = new XMLHttpRequest();
+         xhr.addEventListener('load', e => {
+             console.log(xhr.response[0].title); //esto va si defino responseType
+         })
+         xhr.responseType = 'json';    
+        */
+
+        xhr.open('get', 'https://jsonplaceholder.typicode.com/posts');
+
+
+        xhr.send();
+    </script>
+</body>
+
+</html>
