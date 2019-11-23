@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 06</title>
+		<meta charset="utf-8">
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			body {
+				font-family: Arial, Verdana, sans-serif;
+			}
+			
+			header {
+				height: 150px;
+				background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Xd5iOn9MOs9aPwV2BmBenjWxizwSnSiPTopj5HMmzaGIGMkPnQ&s");
+			}
+			
+			nav {
+				background-color: black;
+				line-height: 50px;
+			}
+			
+			nav span {
+				display: inline-block;
+				width: 150px;
+				text-align: center;
+				color: orange;
+				font-weight: bold;
+				text-decoration: none;
+			}
+			
+			nav span:hover {
+				background-color: orange;
+				color: black;
+			}
+			
+			footer {
+				background-color: black;
+				color: white;
+				padding: 50px 0;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<nav>
+			<span href="#" id="home">HOME</span>
+			<span href="#" id="productos">PRODUCTOS</span>
+			<span href="#" id="contacto">CONTACTO</span>
+		</nav>
+		<main>
+		
+		</main>
+		<footer>Todos los derechos reservados &reg; 2019</footer>
+		
+		<script>
+			const home = document.getElementById('home');
+            const productos = document.getElementById('productos');
+            const contacto = document.getElementById('contacto');
+
+            home.addEventListener('click', e => {
+                alert('click en home');
+                window.location.hash = 'home';
+
+                const xhr = new XMLHttpRequest();
+
+                xhr.addEventListener('load', e => {
+                    if(xhr.status >= 200 && xhr.status < 300){
+                        const main = document.querySelector('main');
+                        main.innerHTML = xhr.response;
+                    }
+                });
+
+                xhr.open('get', 'home.html');
+
+                xhr.send();
+            });    
+
+            productos.addEventListener('click', e => {
+                alert('click en home');
+                window.location.hash = 'productos';
+
+                const xhr = new XMLHttpRequest();
+
+                xhr.addEventListener('load', e => {
+                    if(xhr.status >= 200 && xhr.status < 300){
+                        const main = document.querySelector('main');
+                        main.innerHTML = xhr.response;
+                    }
+                });
+
+                xhr.open('get', 'productos.html');
+
+                xhr.send();
+            });    
+		</script>
+	</body>
+</html>

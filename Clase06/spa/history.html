@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 06</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<span id="home">Home</span>
+		<span id="contacto">Contacto</span>
+		<div></div>
+		<script>
+			const home = document.querySelector('#home');
+			const contacto = document.querySelector('#contacto');
+			const div = document.querySelector('div');
+			
+			function cambiarEstado(src) {
+				const xhr = new XMLHttpRequest();
+				xhr.addEventListener('load', e => {
+					div.innerHTML = xhr.response;
+					history.pushState({
+						data: xhr.response
+					}, `${src}.html`, `/spa/${src}`);
+				});
+				xhr.open('get', `${src}.html`);
+				xhr.send();
+			}
+			
+			cambiarEstado('home');
+			
+			window.addEventListener('popstate', e => {
+				console.log('Cambio la URL');
+				div.innerHTML = history.state.data;
+			});
+		
+			home.addEventListener('click', e => { cambiarEstado('home'); });
+			contacto.addEventListener('click', e => { cambiarEstado('contacto'); });
+			
+			
+		</script>
+	</body>
+</html>
