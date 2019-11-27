@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 07</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<progress min="0" max="100" value="0"></progress>
+		
+		<script>
+			const progress = document.querySelector('progress');
+			
+			const xhr = new XMLHttpRequest();
+			xhr.responseType = 'blob';
+			
+			xhr.addEventListener('progress', e => {
+				const cargado = e.loaded * 100 / e.total;
+				
+				progress.value = cargado;
+				
+				console.log(cargado);
+			});
+			
+			xhr.addEventListener('load', e => {
+				console.log(xhr.response);
+				const blob = xhr.response;
+				const url = URL.createObjectURL(blob);
+				console.log(url);
+				const img = document.createElement('img');
+				img.src = url;
+				document.body.appendChild(img);
+			});
+			
+			xhr.open('get', 'imagen.jpg');
+			
+			xhr.send();
+		</script>
+	</body>
+</html>

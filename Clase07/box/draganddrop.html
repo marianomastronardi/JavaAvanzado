@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 07</title>
+		<meta charset="utf-8">
+		<style>
+			body { display: flex; }
+			
+			#personaje { width: 100px; height: 100px; background-image: url('https://www.sdpnoticias.com/files/image_804_455/uploads/2019/08/05/5d4870c3bb6c0.jpeg'); background-size: cover; border-radius: 50%;}
+			
+			#targaryen { width: 250px; height: 250px; background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4e/Targaryen_Shield.png'); background-size: 20px 20px}
+			
+		</style>
+	</head>
+	<body>
+		<div id="personaje" draggable="true" data-casa="targaryen"></div>
+		<div id="targaryen"></div>
+		
+		<script>
+			const personaje = document.querySelector('#personaje');
+			const casa = document.querySelector('#targaryen');
+			
+			personaje.addEventListener('dragstart', e => {
+				e.dataTransfer.setData('id', e.target.id);
+				//console.log('Drag Start: ', e);
+			});
+			
+			personaje.addEventListener('dragend', e => {
+				//console.log('Drag End: ', e);
+			});
+			
+			personaje.addEventListener('drag', e => {
+				//console.log('Drag: ', e);
+			});
+			
+			casa.addEventListener('dragenter', e => {
+				//console.log('Drag Enter: ', e);
+			});
+			
+			casa.addEventListener('dragover', e => {
+				e.preventDefault();
+				//console.log('Drag Over: ', e);
+			});
+			
+			casa.addEventListener('dragleave', e => {
+				console.log('Drag Leave: ', e);
+			});
+			
+			casa.addEventListener('drop', e => {
+				e.preventDefault();
+				// console.log('Drop: ', e);
+				const id = e.dataTransfer.getData('id');
+				const elemento = document.getElementById(id);
+				
+				if (e.target.id === elemento.dataset.casa) {
+					e.target.appendChild(elemento);
+				}
+				
+			});
+			
+		</script>
+	</body>
+</html>

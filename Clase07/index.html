@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 07</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		
+		<script>
+			const xhr = new XMLHttpRequest();
+			xhr.responseType = 'blob';
+			xhr.addEventListener('load', e =>{
+				console.log(xhr.response);
+			});
+
+			xhr.open('get', 'imagen.jpg');
+			xhr.send();
+            
+		</script>
+	</body>
+</html>

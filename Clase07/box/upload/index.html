@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 07</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		
+		<input type="text" name="nombre" id="nombre">
+		<input type="text" name="apellido" id="apellido">
+		<button id="enviar">Enviar</button>
+	
+		<input type="file" id="archivo">
+		<button id="subir">Subir</button>
+		
+		
+		<script>
+			const nombre = document.querySelector('#nombre');
+			const apellido = document.querySelector('#apellido');
+			const enviar = document.querySelector('#enviar');
+		
+			enviar.addEventListener('click', e => {
+				const xhr = new XMLHttpRequest();
+				
+				xhr.addEventListener('load', e => {
+					console.log(xhr.response);
+				});
+				
+				xhr.open('post', 'enviar.php');
+				
+				const data = new FormData();
+				data.append('nombre', nombre.value);
+				data.append('apellido', apellido.value);
+				
+				xhr.send(data);
+			});
+		
+		
+		
+		
+			const archivo = document.querySelector('#archivo');
+			
+			const subir = document.querySelector('#subir');
+			
+			subir.addEventListener('click', e => {
+				console.dir(archivo);
+				const xhr = new XMLHttpRequest();
+				xhr.addEventListener('load', e => {
+					console.log(xhr.response);
+				});
+				xhr.open('post', 'upload.php');
+				const data = new FormData();
+				data.append('file_upload', archivo.files[0]);
+				xhr.send(data);
+			});
+			
+		</script>
+	</body>
+</html>
