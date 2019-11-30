@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 08</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		
+		<script>
+		fetch('http://wwww.google.com/', {
+			method: 'post',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		
+			const promesa = new Promise((resolve, reject) => {
+				resolve(10);
+			});
+				
+			console.log('INICIO');
+			
+			promesa
+				.then(data => { console.log(data); });
+			
+			console.log('FIN');
+		</script>
+	</body>
+</html>

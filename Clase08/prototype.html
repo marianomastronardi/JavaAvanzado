@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 08</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		
+		<script>
+			/*
+			function Persona(nombre, apellido, dni) {
+				return {
+					nombre,
+					apellido,
+					dni
+				};
+			}
+			
+			const carlos = Persona('Carlos', 'Perez', 5123123123);
+			
+			const carlos2 = Persona('Carlos', 'Perez', 5123123123);
+			*/
+			
+			function Persona(nombre, apellido, dni) {
+				this.nombre = nombre;
+				this.apellido = apellido;
+				this.dni = dni;
+			}
+			
+			Persona.prototype.saludar = function () {
+				alert(`Hola mi nombre es ${this.nombre}`);
+			};
+			
+			const carlos = new Persona('Carlos', 'Perez', 5123123123);
+			
+			function Empleado(nombre, apellido, dni, legajo, sueldo) {
+				Persona.call(this, nombre, apellido, dni);
+				this.legajo = legajo;
+				this.sueldo = sueldo;
+			}
+			
+			Empleado.prototype = Object.create(Persona.prototype);
+			Empleado.prototype.constructor = Empleado;
+			
+			Empleado.prototype.saludarComoEmpleado = function() {
+				alert(`Hola soy el empleado ${this.nombre}`);
+			};
+			
+			const empleadoCarlos = new Empleado('Carlos', 'Perez', 5123123123, 100, 50);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 08</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		
+		<script>
+			
+			/*
+				.then(); // resolve
+				.catch(); // reject
+			*/
+			
+			const promesa = new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve('Datos finales');
+				}, 5000);
+			});
+			
+			promesa
+				.then(response => {
+					console.log('THEN: ', response);
+				})
+				.catch(error => {
+					console.log('CATCH: ', error);
+				})
+				.finally(() => {
+					console.log('FIN');
+				});
+				
+			
+			fetch('https://jsonplaceholder.typicode.com/posts')
+				.then(response => {
+					return response.json();
+				})
+				.then(data => {
+					console.log(data);
+				})
+				.catch(error => {
+					console.log(error);
+				});
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
