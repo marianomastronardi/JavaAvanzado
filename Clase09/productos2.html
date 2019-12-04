@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 09</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		
+		<script>
+		/*
+			const productos = [
+				{ 
+					nombre: 'Smart TV LCD LG 49 " Full HD 49LK5700',
+					precio: 43999,
+					imagen: 'http://d34zlyc2cp9zm7.cloudfront.net/products/8cd9fbab0737d1c335b0f232d72dd8b379b2b8bfa59973d1e3cdc5e72ad06d10.webp_250'
+				},
+				{
+					nombre: 'Smart TV Samsung 32 " HD UN32J4290AGCZB',
+					precio: 17999,
+					imagen: 'http://d34zlyc2cp9zm7.cloudfront.net/products/67862fabe5ff35a9b3f15b5dfc156124297108b44f64edd8b944c6fa374f2641.webp_250'
+				},
+				{
+					nombre: 'Smart TV LED Samsung 65 " 4K Ultra HD 65NU7100',
+					precio: 91999,
+					imagen: 'http://d34zlyc2cp9zm7.cloudfront.net/products/1960c74540e359b9ad9c8ab53f980607f947d8a1379b3b15675a25d5d8d2607d.webp_250'
+				}
+			];
+			
+			productos.forEach(item => {
+				console.log(item);
+				
+				const articulo = document.createElement('article');
+				const nombre = document.createElement('h2');
+				const imagen = document.createElement('img');
+				const precio = document.createElement('p');
+				const comprar = document.createElement('button');
+				
+				nombre.textContent = item.nombre;
+				precio.textContent = `$ ${item.precio}`;
+				imagen.src = item.imagen;
+				comprar.textContent = 'Comprar';
+				
+				articulo.appendChild(nombre);
+				articulo.appendChild(imagen);
+				articulo.appendChild(precio);
+				articulo.appendChild(comprar);
+				
+				document.body.appendChild(articulo);
+			});
+		*/
+		
+		/*
+		const productos = [
+			{ 
+				nombre: 'Smart TV LCD LG 49 " Full HD 49LK5700',
+				precio: 43999,
+				imagen: 'http://d34zlyc2cp9zm7.cloudfront.net/products/8cd9fbab0737d1c335b0f232d72dd8b379b2b8bfa59973d1e3cdc5e72ad06d10.webp_250'
+			},
+			{
+				nombre: 'Smart TV Samsung 32 " HD UN32J4290AGCZB',
+				precio: 17999,
+				imagen: 'http://d34zlyc2cp9zm7.cloudfront.net/products/67862fabe5ff35a9b3f15b5dfc156124297108b44f64edd8b944c6fa374f2641.webp_250'
+			},
+			{
+				nombre: 'Smart TV LED Samsung 65 " 4K Ultra HD 65NU7100',
+				precio: 91999,
+				imagen: 'http://d34zlyc2cp9zm7.cloudfront.net/products/1960c74540e359b9ad9c8ab53f980607f947d8a1379b3b15675a25d5d8d2607d.webp_250'
+			}
+		];
+		
+		class Producto {
+			static mostrarProducto(n, i, p) {
+				const articulo = document.createElement('article');
+				const nombre = document.createElement('h2');
+				const imagen = document.createElement('img');
+				const precio = document.createElement('p');
+				const comprar = document.createElement('button');
+				nombre.textContent = n;
+				precio.textContent = `$ ${p}`;
+				imagen.src = i;
+				comprar.textContent = 'Comprar';
+				articulo.appendChild(nombre);
+				articulo.appendChild(imagen);
+				articulo.appendChild(precio);
+				articulo.appendChild(comprar);
+				document.body.appendChild(articulo);
+			}
+		}
+		
+		productos.forEach(item => {
+			Producto.mostrarProducto(item.nombre, item.imagen, item.precio);
+		});
+		*/
+		
+		class Producto {
+			static mostrarProducto(n, i, p) {
+				
+				
+				const nombre = Nodo.crear('h2', n);
+				const precio = Nodo.crear('p', `$ ${p}`);
+				const comprar = Nodo.crear('button', 'Comprar', {
+					tipo: 'click',
+					funcion: function (e) {
+						alert(`Gracias por comprar el producto ${n}`);
+					}
+				});
+				const imagen = Nodo.crearImagen(i, n);
+				
+				const articulo = Nodo.render('article', [nombre, imagen, precio, comprar]);
+			}
+		}
+		
+		class Nodo {
+			static crear(tag, text, evento) {
+				const nodo = document.createElement(tag);
+				nodo.textContent = text;
+				if (evento) {
+					nodo.addEventListener(evento.tipo, e => {
+						evento.funcion(e);
+					});
+				}
+				return nodo;
+			}
+			
+			static crearImagen(src, alt) {
+				const nodo = document.createElement('img');
+				nodo.src = src;
+				nodo.alt = alt;
+				return nodo;
+			}
+			
+			static render(tag, elements) {
+				const nodo = document.createElement(tag);
+				
+				elements.forEach(elemento => {
+					nodo.appendChild(elemento);
+				});
+				
+				document.body.appendChild(nodo);
+			}
+			
+		}
+		
+		class App {
+			constructor(version) {
+				this.version = version;
+			}
+			
+			pedirProductos() {
+				// XMLHttpRequest | Fetch
+				this.productos = [
+					{ 
+						nombre: 'Smart TV LCD LG 49 " Full HD 49LK5700',
+						precio: 43999,
+						imagen: 'http://d34zlyc2cp9zm7.cloudfront.net/products/8cd9fbab0737d1c335b0f232d72dd8b379b2b8bfa59973d1e3cdc5e72ad06d10.webp_250'
+					},
+					{
+						nombre: 'Smart TV Samsung 32 " HD UN32J4290AGCZB',
+						precio: 17999,
+						imagen: 'http://d34zlyc2cp9zm7.cloudfront.net/products/67862fabe5ff35a9b3f15b5dfc156124297108b44f64edd8b944c6fa374f2641.webp_250'
+					},
+					{
+						nombre: 'Smart TV LED Samsung 65 " 4K Ultra HD 65NU7100',
+						precio: 91999,
+						imagen: 'http://d34zlyc2cp9zm7.cloudfront.net/products/1960c74540e359b9ad9c8ab53f980607f947d8a1379b3b15675a25d5d8d2607d.webp_250'
+					}
+				];
+			}
+			
+			mostrarProductos() {
+				this.productos.forEach(item => {
+					Producto.mostrarProducto(item.nombre, item.imagen, item.precio);
+				});
+			}
+		}
+		
+		const app = new App('1.0.0');
+		app.pedirProductos();
+		app.mostrarProductos();
+		
+		</script>
+	</body>
+</html>

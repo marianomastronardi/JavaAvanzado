@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 09</title>
+		<meta charset="utf-8">
+		<style>
+			.folder {
+				display: inline-block;
+				border: 1px solid black;
+				border-radius: 20px;
+				padding: 20px;
+				cursor: pointer;
+			}
+			
+			.folder:hover {
+				background-color: black;
+				color: white;
+			}
+			
+			.folder img {
+				width: 100px;
+			}
+			
+			.folder span {
+				display: block;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			fetch('https://jsonplaceholder.typicode.com/albums')
+				.then(response => response.json())
+				.then(data => {
+					console.log(data);
+					data.forEach(folder => {
+						const div = document.createElement('div');
+						div.className = 'folder';
+						const img = document.createElement('img');
+						img.src = 'https://d500.epimg.net/cincodias/imagenes/2016/06/15/lifestyle/1466002092_975088_1466002234_noticia_normal.jpg';
+						const span = document.createElement('span');
+						span.textContent = folder.title;
+						div.appendChild(img);
+						div.appendChild(span);
+						
+						div.addEventListener('click', e => {
+							fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${folder.id}`)
+								.then(response => response.json())
+								.then(imagenes => {
+									document.body.innerHTML = '';
+									imagenes.forEach(imagen => {
+										const img = document.createElement('img');
+										img.src = imagen.thumbnailUrl;
+										document.body.appendChild(img);
+									});
+								});
+						});
+						
+						document.body.appendChild(div);
+					});
+				})
+			
+		</script>
+	</body>
+</html>

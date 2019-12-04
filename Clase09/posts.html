@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 09</title>
+		<meta charset="utf-8">
+		<style>
+			.folder {
+				display: inline-block;
+				border: 1px solid black;
+				border-radius: 20px;
+				padding: 20px;
+				cursor: pointer;
+			}
+			
+			.folder:hover {
+				background-color: black;
+				color: white;
+			}
+			
+			.folder img {
+				width: 100px;
+			}
+			
+			.folder span {
+				display: block;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+	
+		<div class="folder">
+			<img src="https://d500.epimg.net/cincodias/imagenes/2016/06/15/lifestyle/1466002092_975088_1466002234_noticia_normal.jpg">
+			<span>Nombre de la carpeta</span>
+		</div>
+		
+		<script>
+			fetch('https://jsonplaceholder.typicode.com/albums')
+				.then(response => response.json())
+				.then(data => {
+					console.log(data);
+					
+				})
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>Clase 09</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+
+	<script>
+		/*	const productos = [
+				{ 
+					nombre: 'Smart TV LCD LG 49 " Full HD 49LK5700',
+					precio: 43999,
+					imagen: 'http://d34zlyc2cp9zm7.cloudfront.net/products/8cd9fbab0737d1c335b0f232d72dd8b379b2b8bfa59973d1e3cdc5e72ad06d10.webp_250'
+				},
+				{
+					nombre: 'Smart TV Samsung 32 " HD UN32J4290AGCZB',
+					precio: 17999,
+					imagen: 'http://d34zlyc2cp9zm7.cloudfront.net/products/67862fabe5ff35a9b3f15b5dfc156124297108b44f64edd8b944c6fa374f2641.webp_250'
+				},
+				{
+					nombre: 'Smart TV LED Samsung 65 " 4K Ultra HD 65NU7100',
+					precio: 91999,
+					imagen: 'http//d34zlyc2cp9zm7.cloudfront.net/products/1960c74540e359b9ad9c8ab53f980607f947d8a1379b3b15675a25d5d8d2607d.webp_250'
+				}
+			];*/
+
+		class Producto {
+			constructor(nombre, imagen, precio) {
+				this.nombre = nombre;
+				this.imagen = imagen;
+				this.precio = precio;
+			}
+
+			//productos.forEach(item => {
+			mostrar() {
+				const articulo = document.createElement('article');
+				const nombre = document.createElement('h2');
+				const imagen = document.createElement('img');
+				const precio = document.createElement('p');
+				const comprar = document.createElement('button');
+
+				nombre.textContent = this.nombre;
+				precio.textContent = `$ ${this.precio};`
+				imagen.src = this.imagen;
+				comprar.textContent = 'Comprar';
+
+				articulo.appendChild(nombre);
+				articulo.appendChild(imagen);
+				articulo.appendChild(precio);
+				articulo.appendChild(comprar);
+
+				document.body.appendChild(articulo);
+			}//)
+
+			static mostrarProducto(producto) {
+				const articulo = document.createElement('article');
+				const nombre = document.createElement('h2');
+				const imagen = document.createElement('img');
+				const precio = document.createElement('p');
+				const comprar = document.createElement('button');
+
+				nombre.textContent = producto.nombre;
+				precio.textContent = `$ ${producto.precio};`
+				imagen.src = producto.imagen;
+				comprar.textContent = 'Comprar';
+
+				articulo.appendChild(nombre);
+				articulo.appendChild(imagen);
+				articulo.appendChild(precio);
+				articulo.appendChild(comprar);
+
+				document.body.appendChild(articulo);
+			}//)
+		}
+		const TV1 = new Producto('Smart TV LCD LG 49 " Full HD 49LK5700', 'http://d34zlyc2cp9zm7.cloudfront.net/products/8cd9fbab0737d1c335b0f232d72dd8b379b2b8bfa59973d1e3cdc5e72ad06d10.webp_250', 43999);
+		//TV1.mostrar();
+		Producto.mostrarProducto(TV1);
+	</script>
+</body>
+
+</html>

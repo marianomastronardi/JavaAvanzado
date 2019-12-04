@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 09</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		
+		<script>
+			// Prototype | Class
+			// http://es6-features.org/#Constants
+			
+			class Persona { // function Persona
+				constructor(nombre, apellido, dni) { // (nombre, apellido, dni)
+					this.nombre = nombre;
+					this.apellido = apellido;
+					this.dni = dni;
+				}
+				
+				hablar() { // Persona.prototype.hablar = function () {
+					console.log('Hablando...');
+				}
+				
+				static saludar() {
+					console.log('Hola...');
+				}
+			}
+			
+			const carlos = new Persona('Carlos', 'Perez', 512341231);
+			
+			class Empleado extends Persona { // Empleado.prototype = Object.create(Persona.prototype);
+				constructor(nombre, apellido, dni, legajo, sueldo) {
+					super(nombre, apellido, dni); // Persona.call(this, nombre, apellido, dni);
+					this.legajo = legajo;
+					this.sueldo = sueldo;
+				}
+			}
+			
+			const empleado = new Empleado('Carlos', 'Perez', 512341231, 1, 1000);
+			
+			/*
+			function Persona(nombre, apellido, dni) {
+				this.nombre = nombre;
+				this.apellido = apellido;
+				this.dni = dni;
+			}
+			
+			Persona.prototype.hablar = function () {
+				console.log('Hablando...');
+			}
+			
+			const carlos = new Persona('Carlos', 'Perez', 512341231);
+			
+			function Empleado(nombre, apellido, dni, legajo, sueldo) {
+				Persona.call(this, nombre, apellido, dni);
+				this.legajo = legajo;
+				this.sueldo = sueldo;
+			}
+			
+			Empleado.prototype = Object.create(Persona.prototype);
+			Empleado.prototype.constructor = Empleado;
+			
+			const empleado = new Empleado('Carlos', 'Perez', 512341231, 1, 1000);
+			*/
+		</script>
+	</body>
+</html>
