@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 10</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		
+		<script>
+			
+			/*
+			class App {
+				constructor(version) {
+					if (App.instancia !== undefined) {
+						return App.instancia;
+					} else {
+						this.version = version;
+						App.instancia = this;
+					}
+				}
+				
+				static eliminarInstancia() {
+					App.instancia = undefined;
+				}
+			}
+			
+			const app1 = new App('1.0.0');
+			App.eliminarInstancia();
+			const app2 = new App('2.0.0');
+			*/
+			
+			
+			/*
+			function crearAdministrador(nombre, apellido, clave) {
+				if (crearAdministrador.instancia !== undefined) {
+					return crearAdministrador.instancia;
+				} else {
+				
+					const admin = {};
+					
+					admin.nombre = nombre;
+					admin.apellido = apellido;
+					admin.clave = clave;
+					
+					crearAdministrador.instancia = admin;
+					
+					return admin;
+				}
+			}
+			
+			const admin1 = crearAdministrador('Carlos', 'Perez', '123456');
+			const admin2 = crearAdministrador('Carla', 'Perez', '567890');
+			*/
+			
+			
+			/*
+			(function () { // IIFE
+				const nombre = 'Jonathan';
+				let data = {
+					producto: 'TV',
+					precio: 2000
+				};
+				
+				function mostrarNombre() {
+					console.log(nombre);
+				}
+				
+				function mostrarProducto() {
+					console.log(data.producto + ' ' + data.precio);
+				}
+				
+				mostrarNombre();
+				mostrarProducto();
+			})();
+			*/
+			
+			
+			
+			(function () {
+				function sumar(a, b) {
+					return a + b;
+				}
+				
+				function restar(a, b) {
+					return a - b;
+				}
+				
+				function multiplicar(a, b) {
+					return a * b;
+				}
+				
+				function dividir(a, b) {
+					return a / b;
+				}
+				
+				window.CALCULADORA = {
+					sumar: sumar,
+					restar,
+					multiplicar,
+					dividir
+				};
+				
+			})();
+			
+			
+			
+			
+			
+		</script>
+		<script src="funcion.js"></script>
+	</body>
+</html>
