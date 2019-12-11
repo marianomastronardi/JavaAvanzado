@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 10</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+
+		<script>
+			class App {
+				constructor() {
+					this.usuario = localStorage.getItem('usuario');
+					
+					if (this.usuario === null) {
+						this.mostrarFormulario();
+					} else {
+						this.mostrarSaludo();
+					}
+				}
+				
+				mostrarFormulario() {
+					document.body.innerHTML = `<div id="form">
+						<input type="text" id="nombre"><button>Guardar</button>
+					</div>`;
+					
+					const nombre = document.getElementById('nombre');
+					const boton = document.querySelector('button');
+					
+					boton.addEventListener('click', e => {
+						localStorage.setItem('usuario', nombre.value);
+						this.usuario = nombre.value;
+						this.mostrarSaludo();
+					});
+					
+				}
+				
+				mostrarSaludo() {
+					document.body.innerHTML = `<div id="saludar">
+						<h2>Bienvenido ${this.usuario}</h2>
+					</div>`;
+				}
+			}
+			
+			const app = new App();
+			
+			
+			const persona = {
+				nombre: 'Carlos', 
+				apellido: 'Perez',
+				edad: 40
+			}
+			
+			// Para guardar un objeto dentro del localStorage debemos usar JSON.stringify
+			localStorage.setItem('carlos', JSON.stringify(persona));
+			
+			const p = localStorage.getItem('carlos');
+			
+			// Para obtener un objeto del localStorage debemos hacer un JSON.parse
+			const pObjeto = JSON.parse(p);
+			
+			console.log(pObjeto.nombre);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

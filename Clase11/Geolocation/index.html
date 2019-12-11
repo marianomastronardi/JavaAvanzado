@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Geolocation</title>
+        <meta charset="utf-8">
+		<style>
+			  #map {
+				height: 100%;
+			  }
+			  html, body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			  }
+		</style>
+	
+    </head>
+    <body>
+		<div id="map"></div>
+		
+		<script>
+			var map;
+			
+			// https://developer.mozilla.org/es/docs/Web/API/PositionOptions
+			const options = {
+				enableHighAccuracy: true,
+				timeout: 5000,
+				maximunAge: 0
+			};
+		
+			function mostrarMapa(datos) {
+				map = new google.maps.Map(document.getElementById('map'), {
+				  center: {lat: datos.coords.latitude, lng: datos.coords.longitude},
+				  zoom: 16
+				});
+				
+				// https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+				
+				new google.maps.Marker({position: {lat: datos.coords.latitude, lng: datos.coords.longitude}, map: map});
+			}
+			
+			function errorDatos(error) {
+				console.log('Error: ', error);
+			}
+			
+			
+			function initMap() {
+				//https://developer.mozilla.org/es/docs/Web/API/Geolocation/getCurrentPosition
+				navigator.geolocation.getCurrentPosition(mostrarMapa, errorDatos, options);
+			  }
+		</script>
+		
+		<!-- https://developers.google.com/maps/documentation/javascript/tutorial -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIaSyCESSGc0KGQXzayTim40UR_yyveS7-6Ee4&callback=initMap"
+    async defer></script>
+	
+	<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13136.274161504258!2d-58.3758684!3d-34.6024283!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x568d6d5f7f1f535d!2sEducaci%C3%B3n%20IT!5e0!3m2!1ses-419!2sar!4v1576023821461!5m2!1ses-419!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>JSONP</title>
+    </head>
+    <body>
+        
+        <script>
+			// https://es.wikipedia.org/wiki/JSONP
+			
+			function procesar(datos) {
+				console.log(datos);
+			}
+			
+            const xhr = new XMLHttpRequest();
+            
+            xhr.open('get', 'json.php');
+
+            xhr.responseType = 'json';
+
+            xhr.addEventListener('load', e => { // onError
+                const script = document.createElement('script');
+				script.src = 'jsonp.php?callback=procesar'
+				
+				document.body.appendChild(script);
+				
+            });
+
+            xhr.send();
+        </script>
+    </body>
+</html>

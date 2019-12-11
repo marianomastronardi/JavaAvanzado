@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Clase 10</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<div id="form">
+			<input type="text" id="nombre"><button>Guardar</button>
+		</div>
+		
+		<div id="saludar">
+			<h2>Bienvenido Nombre</h2>
+		</div>
+		<script>
+			const nombre = document.getElementById('nombre');
+			const boton = document.querySelector('button');
+			const form = document.getElementById('form');
+			const saludar = document.getElementById('saludar');
+			
+			boton.addEventListener('click', e => {
+				localStorage.setItem('usuario', nombre.value);
+				form.style.display = 'none';
+				saludar.style.display = 'block';
+				saludar.innerHTML = `<h2>Bienvenido ${localStorage.getItem('usuario')}</h2>`;
+			});
+			
+			const usuario = localStorage.getItem('usuario');
+			
+			if (usuario === null) {
+				saludar.style.display = 'none';
+			} else {
+				form.style.display = 'none';
+				saludar.innerHTML = `<h2>Bienvenido ${usuario}</h2>`;
+			}
+			
+		</script>
+	</body>
+</html>
